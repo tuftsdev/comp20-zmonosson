@@ -1,0 +1,9 @@
+README.md
+Zoe Monosson
+Lab 4
+
+I correctly implemented responsive.css so that as the web page dimensions 
+change, so does the depicted image from software.png. I discussed my assignment
+with Kate, the TA who helped me realize that my project was not working because
+I was using "min-device-width" instead of "min-width." I spent approximately
+1-2 hours on the lab.

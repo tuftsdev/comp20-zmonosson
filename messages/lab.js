@@ -4,7 +4,7 @@ function parse(){
 
     request = new XMLHttpRequest();
 
-    request.open("GET", "data.json", true);
+    request.open("GET","data.json", true);
 
     request.onreadystatechange = parseData;
 
@@ -24,7 +24,6 @@ function parseData(){
 	    messagesDiv.innerHTML += "<p>" + converted[i]["content"] + " " +
 		converted[i]["username"];
 	    
-	} //else if (request.readyState == 4 && request.status == 304){
-	// alert("no data changed");
-   }
+	} 
+    }
 }

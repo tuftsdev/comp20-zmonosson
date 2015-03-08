@@ -2,11 +2,12 @@
 
 function parse(){
     var request;
+
     request = new XMLHttpRequst();
 
     request.open("GET", "data.json", true);
 
-    request.onreadystatechange() = parseData();
+    request.onreadystatechange = parseData;
 
     request.send();
 

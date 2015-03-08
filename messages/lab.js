@@ -21,7 +21,8 @@ function parseData(){
 	var converted = JSON.parse(request.responseText);   
 	
 	for(i= 0; i <converted.length; i++){
-	    messagesDiv.innerHTML += "<p>" + converted[i]["content"];
+	    messagesDiv.innerHTML += "<p>" + converted[i]["content"] + " " +
+		converted[i]["username"];
 	    
 	} //else if (request.readyState == 4 && request.status == 304){
 	// alert("no data changed");

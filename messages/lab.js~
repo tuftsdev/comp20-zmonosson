@@ -1,9 +1,8 @@
 // Your JavaScript goes here...
 
 function parse(){
-    var request;
 
-    request = new XMLHttpRequst();
+    request = new XMLHttpRequest();
 
     request.open("GET", "data.json", true);
 
@@ -15,13 +14,16 @@ function parse(){
 
 function parseData(){
 
-    if (request.readyState() == 4){
-	messagesDiv = document.getElementById( "messages");
-	converted = JSON.parse(request.responseText);   
+    if (request.readyState == 4){
+	
+	var messagesDiv = document.getElementById( "messages");
+	
+	var converted = JSON.parse(request.responseText);   
+	
 	for(i= 0; i <converted.length; i++){
 	    messagesDiv.innerHTML += "<p>" + converted[i]["content"];
-	    }
-    }else if (request.readyState == 4 && request.status == 304){
-	alert("no data changed");
-    }
+	    
+	} //else if (request.readyState == 4 && request.status == 304){
+	// alert("no data changed");
+   }
 }

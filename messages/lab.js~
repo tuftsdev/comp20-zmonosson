@@ -14,6 +14,8 @@ function parse(){
 	for(i= 0; i <converted.length; i++){
 	    messagesDiv.innerHTML += "<p>" + converted[i]["content"];
 	    }
+    }else if (request.readyState == 4 && request.status == 304){
+	alert("no data changed");
     }
 
 

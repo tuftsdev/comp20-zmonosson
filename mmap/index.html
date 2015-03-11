@@ -39,7 +39,7 @@
     		
     		// Set up Google Map
 			var mapOptions = {
-	          	zoom: 13,
+	          	zoom: 10,
 	          	center: me,
 	          	mapTypeId: google.maps.MapTypeId.ROADMAP
 	        };
@@ -57,6 +57,8 @@
 	        marker.setMap(map);
 	        
 	        var infowindow = new google.maps.InfoWindow();
+	        
+	        console.log("6. Right before placing a marker for myself");
 
 			google.maps.event.addListener(marker, 'click', function(){
 	        	infowindow_landmark.setContent(marker.title);
@@ -68,33 +70,46 @@
 	        /*// Create request to send geolocation information  
 	    	request = new XMLHttpRequest();
 
+	    	params = "login=SheriHeller&lat=myLat&lng=myLng";
+
 	    	request.open("POST", https://secret-about-box.herokuapp.com/sendLocation, true);
 
-	    	request.onreadystatechange = parseData;
 
-	    	request.send();	*/
+	    	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"
+
+	    	request.onreadystatechange = parseData;
+			
+			
+	    	request.send(params);
+
+	    	 );	*/
 			
 			
 	        var landmark = new google.maps.LatLng(42.3599611, -71.0567528);	
 			console.log("6. I created a landmark");
 
 			//Create a marker (faneuil)
-	        var marker_landmark = new google.maps.Marker({
+	        	marker = new google.maps.Marker({
 	        	position: landmark,
 	        	title: "landmark"
 	        });
 
+
 	        console.log ("7. I made a marker for the landmark");
+
+	        marker.setMap(map);
 
 	        //Create info window for the marker (faneuil)
 	        //landmark.setMap(map);
-	        var infowindow_landmark = new google.maps.InfoWindow();
+	       /* infowindow = new google.maps.InfoWindow();
 	        	
 	        //Set up marker pop up in relation to the "click" action for "faneuil hall"
-	        google.maps.event.addListener(marker_landmark, 'click', function(){
-	        	infowindow_landmark.setContent(marker_landmark.title);
-	        	infowindow.open(map, marker_landmark);
+	        google.maps.event.addListener(marker, 'click', function(){
+	        	infowindow_landmark.setContent(marker.title);
+	        	infowindow.open(map, marker);
 	        });
+
+*/
 	        console.log("8. I added a landmark marker");
 	    }
 	    

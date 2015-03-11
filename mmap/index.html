@@ -39,7 +39,7 @@
     		
     		// Set up Google Map
 			var mapOptions = {
-	          	zoom: 13,
+	          	zoom: 14,
 	          	center: me,
 	          	mapTypeId: google.maps.MapTypeId.ROADMAP
 	        };
@@ -57,13 +57,44 @@
 	        marker.setMap(map);
 	        var infowindow = new google.maps.InfoWindow();
 
+	        // Create request to send geolocation information  
+	    	request = new XMLHttpRequest();
+
+	    	request.open("POST", https://secret-about-box.herokuapp.com/sendLocation, true);
+
+	    	request.onreadystatechange = parseData;
+
+	    	request.send();	
+
 	        //Set up marker pop up in relation to the "click" action 
 	        google.maps.event.addListener(marker, 'click', function(){
 	        	infowindow.setContent(marker.title);
 	        	infowindow.open(map, marker);
 	        });
 	    }
-	      
+	    
+	    function parseData(){
+	    	otherLat = 0;
+	    	otherLng = 0;
+	    	username = "empty";
+
+	    	if request.readyState == 4){
+
+	    		var locationsDiv = document.getElementById( "location");
+
+	    		var converted = JSON.parse(request.responseText);
+
+	    		for (i =0; i < converted.length; i++){
+	    			otherLat = converted[i]["lat"];
+	    			otherLng = converted[i]["lng"];
+	    			username = converted[i]["login"];
+
+	    		}
+	    	}
+	    }
+	     
+
+
 	</script>
 	
 	</head>

@@ -25,6 +25,17 @@
 	    			//set my position
 	    			myLat = position.coords.latitude;
 	    			myLng = position.coords.longitude;
+					var me = new google.maps.LatLng(myLat, myLng);
+
+					// Set up Google Map
+					var mapOptions = {
+	          			zoom: 10,
+	          			center: me,
+	          			mapTypeId: google.maps.MapTypeId.ROADMAP
+	        		};
+
+	        		// Create the map_canvas
+	        		var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 
 	        		// Create request to send geolocation information  
 	    			request = new XMLHttpRequest();
@@ -46,7 +57,7 @@
 	    	console.log("4. Leaving init()");
 
 	    }
-
+/*
 	    function mymap(myLat, myLng){
 	    	//my location is set in longitude and latitude
 	    	var me = new google.maps.LatLng(myLat, myLng);
@@ -83,7 +94,7 @@
 	        });
 */
 
-	    }
+	    }*/
 	  /*	function createmarker(login, otherLat, otherLng){
 	  		var landmark = new google.maps.LatLng(otherLat, otherLng);	
 
@@ -119,6 +130,7 @@
 	  	}  
 
 	    function parseData() {
+	    	var infowindow = new google.maps.InfoWindow();
 	    	otherLat = 0;
 	    	otherLng = 0;
 	    	username = "empty";
@@ -134,7 +146,18 @@
 	    			otherLat = converted[i]["lat"];
 	    			otherLng = converted[i]["lng"];
 	    			username = converted[i]["login"];
-	    			//make put on map function
+	    			
+	    			// Create a marker
+	    			var marker = new google.maps.Marker({
+	        			position: me,
+	        			title: login
+	        		});
+
+					// Create info window
+	        		google.maps.event.addListener(marker, 'click', function(){
+	        			infowindow.setContent(marker.title);
+	        			infowindow.open(map, marker);
+	        		});
 	    		}
 	    	}
 	    }

@@ -85,6 +85,9 @@
 	        			title: username
 	        		});
 
+	    			//place marker on map
+	    			marker.setMap(map);	
+
 					// Create info window
 	        		google.maps.event.addListener(marker, 'click', function(){
 	        			infowindow.setContent(marker.title);

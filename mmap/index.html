@@ -25,21 +25,19 @@
 	    			//set my position
 	    			myLat = position.coords.latitude;
 	    			myLng = position.coords.longitude;
-/*
+
 	        		// Create request to send geolocation information  
 	    			request = new XMLHttpRequest();
 
-	    			params = "login=SheriHeller&lat=myLat&lng=myLng";
+	    			params = "login=SheriHeller&lat=" + myLat + "&lng=" + myLng;
 
-	    			request.open("POST", https://secret-about-box.herokuapp.com/sendLocation, true);
+	    			request.open("POST", "https://secret-about-box.herokuapp.com/sendLocation", true);
 
-	    			request.setRequestHeader("Content-type", "application/x-www-form-urlencoded"
+	    			request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
 	    			request.onreadystatechange = parseData;
 			
 	    			request.send(params);
-
-	    	 		);	*/
 
 	    			mymap(myLat, myLng);
 	    			console.log("3. Leaving the getCurrentPosition function");
@@ -120,17 +118,18 @@
 	        });
 	  	}  
 
-	   /* function parseData(){
+	    function parseData() {
 	    	otherLat = 0;
 	    	otherLng = 0;
 	    	username = "empty";
 
-	    	if request.readyState == 4){
-
-	    		var locationsDiv = document.getElementById( "location");
+	    	console.log("In parseData()");
+	    	if (request.readyState == 4){
+	    		console.log("In parseData() --YAY!");
+	    		console.log(request.responseText);
 
 	    		var converted = JSON.parse(request.responseText);
-
+	    		console.log(converted);
 	    		for (i =0; i < converted.length; i++){
 	    			otherLat = converted[i]["lat"];
 	    			otherLng = converted[i]["lng"];
@@ -139,9 +138,7 @@
 	    		}
 	    	}
 	    }
-	     
-	  	function markmap(){
-*/
+
 	
 	  	
 

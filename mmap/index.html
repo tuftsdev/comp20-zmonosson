@@ -36,7 +36,9 @@
 	    function mymap(myLat, myLng){
 	    	//my location is set in longitude and latitude
 	    	var me = new google.maps.LatLng(myLat, myLng);
-    		
+	    	var landmark = new google.maps.LatLng(42.3599611, -71.0567528);
+    		//createmarker("faneuli",42.3599611, -71.0567528);	
+
     		// Set up Google Map
 			var mapOptions = {
 	          	zoom: 10,
@@ -47,23 +49,10 @@
 	        // Create the map_canvas
 	        var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 
-	        //Create a marker
-	        var marker = new google.maps.Marker({
-	        	position: me,
-	        	title: "You Are Here"
-	        });
-
-	        //Create info window for the marker
-	        marker.setMap(map);
-	        
 	        var infowindow = new google.maps.InfoWindow();
-	        
-	        console.log("6. Right before placing a marker for myself");
 
-			google.maps.event.addListener(marker, 'click', function(){
-	        	infowindow_landmark.setContent(marker.title);
-	        	infowindow.open(map, marker);
-	        });
+	        placemarker(me, "I am here", map, infowindow);
+	        placemarker(landmark, "faneuil", map, infowindow);
 
 			console.log("5. I placed a marker for myself");
 
@@ -85,7 +74,7 @@
 	    	 );	*/
 			
 			
-	        var landmark = new google.maps.LatLng(42.3599611, -71.0567528);	
+	        /*var landmark = new google.maps.LatLng(42.3599611, -71.0567528);	
 			console.log("6. I created a landmark");
 
 			//Create a marker (faneuil)
@@ -93,26 +82,42 @@
 	        	position: landmark,
 	        	title: "landmark"
 	        });
+*/
 
+	    }
+	  /*	function createmarker(login, otherLat, otherLng){
+	  		var landmark = new google.maps.LatLng(otherLat, otherLng);	
 
-	        console.log ("7. I made a marker for the landmark");
-
-	        marker.setMap(map);
-
-	        //Create info window for the marker (faneuil)
-	        //landmark.setMap(map);
-	       /* infowindow = new google.maps.InfoWindow();
-	        	
-	        //Set up marker pop up in relation to the "click" action for "faneuil hall"
-	        google.maps.event.addListener(marker, 'click', function(){
-	        	infowindow_landmark.setContent(marker.title);
-	        	infowindow.open(map, marker);
+	  		//Create a marker
+	        var marker = new google.maps.Marker({
+	        	position: landmark,
+	        	title: login
 	        });
 
-*/
-	        console.log("8. I added a landmark marker");
-	    }
-	    
+
+
+	  	}*/
+
+
+	  	function placemarker(me, login, map, infowindow){
+
+	  		//Create a marker
+	        var marker = new google.maps.Marker({
+	        	position: me,
+	        	title: login
+	        });
+
+	        //Create info window for the marker
+	        marker.setMap(map);
+	       
+	        
+	        console.log("6. Right before placing a marker for myself");
+
+			google.maps.event.addListener(marker, 'click', function(){
+	        	infowindow.setContent(marker.title);
+	        	infowindow.open(map, marker);
+	        });
+	  	}  
 
 	   /* function parseData(){
 	    	otherLat = 0;

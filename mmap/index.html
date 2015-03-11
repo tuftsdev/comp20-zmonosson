@@ -39,7 +39,7 @@
     		
     		// Set up Google Map
 			var mapOptions = {
-	          	zoom: 14,
+	          	zoom: 13,
 	          	center: me,
 	          	mapTypeId: google.maps.MapTypeId.ROADMAP
 	        };
@@ -55,25 +55,51 @@
 
 	        //Create info window for the marker
 	        marker.setMap(map);
+	        
 	        var infowindow = new google.maps.InfoWindow();
 
-	        // Create request to send geolocation information  
+			google.maps.event.addListener(marker, 'click', function(){
+	        	infowindow_landmark.setContent(marker.title);
+	        	infowindow.open(map, marker);
+	        });
+
+			console.log("5. I placed a marker for myself");
+
+	        /*// Create request to send geolocation information  
 	    	request = new XMLHttpRequest();
 
 	    	request.open("POST", https://secret-about-box.herokuapp.com/sendLocation, true);
 
 	    	request.onreadystatechange = parseData;
 
-	    	request.send();	
+	    	request.send();	*/
+			
+			
+	        var landmark = new google.maps.LatLng(42.3599611, -71.0567528);	
+			console.log("6. I created a landmark");
 
-	        //Set up marker pop up in relation to the "click" action 
-	        google.maps.event.addListener(marker, 'click', function(){
-	        	infowindow.setContent(marker.title);
-	        	infowindow.open(map, marker);
+			//Create a marker (faneuil)
+	        var marker_landmark = new google.maps.Marker({
+	        	position: landmark,
+	        	title: "landmark"
 	        });
+
+	        console.log ("7. I made a marker for the landmark");
+
+	        //Create info window for the marker (faneuil)
+	        //landmark.setMap(map);
+	        var infowindow_landmark = new google.maps.InfoWindow();
+	        	
+	        //Set up marker pop up in relation to the "click" action for "faneuil hall"
+	        google.maps.event.addListener(marker_landmark, 'click', function(){
+	        	infowindow_landmark.setContent(marker_landmark.title);
+	        	infowindow.open(map, marker_landmark);
+	        });
+	        console.log("8. I added a landmark marker");
 	    }
 	    
-	    function parseData(){
+
+	   /* function parseData(){
 	    	otherLat = 0;
 	    	otherLng = 0;
 	    	username = "empty";
@@ -88,12 +114,15 @@
 	    			otherLat = converted[i]["lat"];
 	    			otherLng = converted[i]["lng"];
 	    			username = converted[i]["login"];
-
+	    			//make put on map function
 	    		}
 	    	}
 	    }
 	     
-
+	  	function markmap(){
+*/
+	
+	  	
 
 	</script>
 	

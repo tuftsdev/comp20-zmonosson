@@ -25,6 +25,22 @@
 	    			//set my position
 	    			myLat = position.coords.latitude;
 	    			myLng = position.coords.longitude;
+/*
+	        		// Create request to send geolocation information  
+	    			request = new XMLHttpRequest();
+
+	    			params = "login=SheriHeller&lat=myLat&lng=myLng";
+
+	    			request.open("POST", https://secret-about-box.herokuapp.com/sendLocation, true);
+
+	    			request.setRequestHeader("Content-type", "application/x-www-form-urlencoded"
+
+	    			request.onreadystatechange = parseData;
+			
+	    			request.send(params);
+
+	    	 		);	*/
+
 	    			mymap(myLat, myLng);
 	    			console.log("3. Leaving the getCurrentPosition function");
 	    		});
@@ -56,22 +72,7 @@
 
 			console.log("5. I placed a marker for myself");
 
-	        /*// Create request to send geolocation information  
-	    	request = new XMLHttpRequest();
-
-	    	params = "login=SheriHeller&lat=myLat&lng=myLng";
-
-	    	request.open("POST", https://secret-about-box.herokuapp.com/sendLocation, true);
-
-
-	    	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"
-
-	    	request.onreadystatechange = parseData;
-			
-			
-	    	request.send(params);
-
-	    	 );	*/
+	        
 			
 			
 	        /*var landmark = new google.maps.LatLng(42.3599611, -71.0567528);	

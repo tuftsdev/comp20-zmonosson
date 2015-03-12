@@ -115,14 +115,14 @@
 	    				var infowindow = new google.maps.InfoWindow({
       						content: contentString
   						});
-	    				
+
 	    				//place marker on map
 	    				marker.setMap(map);	
 
 						// Create info window
 	        			google.maps.event.addListener(marker, 'click', function(){
 	        				//infowindow.setContent(this.title);
-	        				//infowindow.setContent(dstring);
+	        				infowindow.setContent(this.title + '<br/>' + dstring);
 	        				infowindow.open(map, this);
 	        			});
 	    			}

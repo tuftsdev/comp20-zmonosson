@@ -11,11 +11,15 @@
 	
 	<script type="text/javascript">
 
-		var infowindow = new google.maps.InfoWindow();
+		//var contentString;
+		//var infowindow = new google.maps.InfoWindow();
+		
 		var myLat = 0;
 		var myLng = 0;
 		var orgin = new google.maps.LatLng(myLat, myLng);
 		
+		
+
 		// Set up Google Map
 		var mapOptions = {
 	        zoom: 13,
@@ -108,10 +112,10 @@
 
 	    				var contentString = marker.title + '<br/>' + dstring;
 
-	    				infowindow = new google.maps.InfoWindow({
+	    				var infowindow = new google.maps.InfoWindow({
       						content: contentString
   						});
-
+	    				
 	    				//place marker on map
 	    				marker.setMap(map);	
 
@@ -129,13 +133,13 @@
 	    function mymap(myLat, myLng){
 			var mymarker = new google.maps.LatLng(myLat, myLng);
 			var image = 'sunflower.gif';	
+			var infowindow = new google.maps.InfoWindow();
 
 	    	// Create my marker
 	    	var marker = new google.maps.Marker({
 	        	position: mymarker,
 	        	title: "Here I am!",
 	        	icon: image
-
 	        });
 
 	    	//place marker on map

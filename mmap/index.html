@@ -93,8 +93,12 @@
 	    				username = converted[i]["login"];
 	    				var other = new google.maps.LatLng(otherLat, otherLng);
 	    				var markerdistance = distance(otherLat, myLat, otherLng, myLng);
+	    				
 	    				var rounded = Math.round(markerdistance * 100) / 100;
+	    				
 	    				console.log(rounded);
+	    				
+	    				var dstring = rounded.toString() + " " + "miles";
 
 	    				// Create a marker
 	    				var marker = new google.maps.Marker({
@@ -102,13 +106,19 @@
 	        				title: username,
 	        			});
 
+	    				var contentString = marker.title + '<br/>' + dstring;
+
+	    				infowindow = new google.maps.InfoWindow({
+      						content: contentString
+  						});
+
 	    				//place marker on map
 	    				marker.setMap(map);	
 
 						// Create info window
 	        			google.maps.event.addListener(marker, 'click', function(){
-	        				infowindow.setContent(this.title);
-	        				//infowindow.setContent();
+	        				//infowindow.setContent(this.title);
+	        				//infowindow.setContent(dstring);
 	        				infowindow.open(map, this);
 	        			});
 	    			}
@@ -118,13 +128,15 @@
 
 	    function mymap(myLat, myLng){
 			var mymarker = new google.maps.LatLng(myLat, myLng);
+			var image = 'sunflower.gif';	
 
 	    	// Create my marker
 	    	var marker = new google.maps.Marker({
 	        	position: mymarker,
-	        	title: "Here I am!"
+	        	title: "Here I am!",
+	        	icon: image
 
-	        		});
+	        });
 
 	    	//place marker on map
 	    	marker.setMap(map);	

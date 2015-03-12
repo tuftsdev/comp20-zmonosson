@@ -12,7 +12,7 @@
 	<script type="text/javascript">
 
 		//var contentString;
-		//var infowindow = new google.maps.InfoWindow();
+		var infowindow = new google.maps.InfoWindow();
 		
 		var myLat = 0;
 		var myLng = 0;
@@ -110,11 +110,11 @@
 	        				title: username,
 	        			});
 
-	    				var contentString = marker.title + '<br/>' + dstring;
+	    				//var contentString = marker.title + '<br/>' + dstring;
 
-	    				var infowindow = new google.maps.InfoWindow({
+	    				/*var infowindow = new google.maps.InfoWindow({
       						content: contentString
-  						});
+  						});*/
 
 	    				//place marker on map
 	    				marker.setMap(map);	
@@ -123,6 +123,7 @@
 	        			google.maps.event.addListener(marker, 'click', function(){
 	        				//infowindow.setContent(this.title);
 	        				infowindow.setContent(this.title + '<br/>' + dstring);
+	        				//infowindow.setContent(contentString);
 	        				infowindow.open(map, this);
 	        			});
 	    			}

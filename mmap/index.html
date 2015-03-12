@@ -11,47 +11,38 @@
 	
 	<script type="text/javascript">
 
-		//var contentString;
 		var infowindow = new google.maps.InfoWindow();
 		
 		var myLat = 0;
 		var myLng = 0;
 		var orgin = new google.maps.LatLng(myLat, myLng);
-		
-		
 
-		// Set up Google Map
 		var mapOptions = {
 	        zoom: 13,
 	        center: orgin,
 	        mapTypeId: google.maps.MapTypeId.ROADMAP
 	    };
 
-		// Create the map_canvas
 	    var map; 
 	    var request;
+
+
 
 	    function init(){
 
 	    	map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 
-	    	console.log("1. In init before geolocation");
 
-	    	if(navigator.geolocation){
-	    	//google maps has been approved to see your location		
+	    	if(navigator.geolocation){	
 	    		navigator.geolocation.getCurrentPosition(function(position){
-	    			console.log("2. Got your location");
-	    			//set my position
+	    			
 	    			myLat = position.coords.latitude;
 	    			myLng = position.coords.longitude;
 					
-					console.log("Before map");
-	    			
-	    			//center the map to my location
 	    			var me = new google.maps.LatLng(myLat, myLng);
 	    			map.panTo(me);
 
-	        		// Create request to send geolocation information  
+	        		 
 	    			request = new XMLHttpRequest();
 
 	    			params = "login=SheriHeller&lat=" + myLat + "&lng=" + myLng;
@@ -64,12 +55,9 @@
 			
 	    			request.send(params);
 
-	    			//mymap(myLat, myLng);
-	    			console.log("3. Leaving the getCurrentPosition function");
 	    		});
 	    	}
-	    	console.log("4. Leaving init()");
-
+	    	
 	    }
 
 
@@ -79,51 +67,34 @@
 	    	otherLng = 0;
 	    	username = "empty";
 
-	    	console.log("In parseData()");
 	    	if (request.readyState == 4){
-	    		console.log("In parseData() --YAY!");
-	    		console.log(request.responseText);
 
 	    		var converted = JSON.parse(request.responseText);
-	    		console.log(converted);
+	    		
 	    		
 	    		for (i =0; i < converted.length; i++){
-	    			if(converted[i]["lat"] == myLat && converted[i]["lng"] == myLng){
+	    			if(converted[i]["login"] == "SheriHeller" && converted[i]["lat"] == myLat && converted[i]["lng"] == myLng){
 	    				mymap(myLat, myLng);
 	    			} else {
-
 	    				otherLat = converted[i]["lat"];
 	    				otherLng = converted[i]["lng"];
 	    				username = converted[i]["login"];
 	    				var other = new google.maps.LatLng(otherLat, otherLng);
 	    				var markerdistance = distance(otherLat, myLat, otherLng, myLng);
 	    				
-	    				var rounded = Math.round(markerdistance * 100) / 100;
-	    				
-	    				console.log(rounded);
+	    				var rounded = Math.round(markerdistance * 1000) / 1000;
 	    				
 	    				var dstring = rounded.toString() + " " + "miles away";
 
-	    				// Create a marker
 	    				var marker = new google.maps.Marker({
 	        				position: other,
-	        				title: username + " " + dstring,
+	        				title: username + " " + '<br/>' + dstring,
 	        			});
-
-	    				//var contentString = marker.title + '<br/>' + dstring;
-
-	    				/*var infowindow = new google.maps.InfoWindow({
-      						content: contentString
-  						});*/
-
-	    				//place marker on map
+	    			
 	    				marker.setMap(map);	
-
-						// Create info window
+						
 	        			google.maps.event.addListener(marker, 'click', function(){
-	        				//infowindow.setContent(this.title);
-	        				infowindow.setContent(this.title);
-	        				//infowindow.setContent(contentString);
+	        				infowindow.setContent(this.title);	        			
 	        				infowindow.open(map, this);
 	        			});
 	    			}
@@ -136,22 +107,18 @@
 			var image = 'sunflower.gif';	
 			var infowindow = new google.maps.InfoWindow();
 
-	    	// Create my marker
 	    	var marker = new google.maps.Marker({
 	        	position: mymarker,
 	        	title: "Here I am!",
 	        	icon: image
 	        });
 
-	    	//place marker on map
 	    	marker.setMap(map);	
 
-			// Create info window
 	        google.maps.event.addListener(marker, 'click', function(){
 	        	infowindow.setContent(this.title);
 	        	infowindow.open(map, this);
 	        });	
-
 	    }
 
 

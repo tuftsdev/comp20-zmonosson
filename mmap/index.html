@@ -92,11 +92,14 @@
 	    				otherLng = converted[i]["lng"];
 	    				username = converted[i]["login"];
 	    				var other = new google.maps.LatLng(otherLat, otherLng);
-	    			
+	    				var markerdistance = distance(otherLat, myLat, otherLng, myLng);
+	    				var rounded = Math.round(markerdistance * 100) / 100;
+	    				console.log(rounded);
+
 	    				// Create a marker
 	    				var marker = new google.maps.Marker({
 	        				position: other,
-	        				title: username
+	        				title: username,
 	        			});
 
 	    				//place marker on map
@@ -105,6 +108,7 @@
 						// Create info window
 	        			google.maps.event.addListener(marker, 'click', function(){
 	        				infowindow.setContent(this.title);
+	        				//infowindow.setContent();
 	        				infowindow.open(map, this);
 	        			});
 	    			}
@@ -119,6 +123,7 @@
 	    	var marker = new google.maps.Marker({
 	        	position: mymarker,
 	        	title: "Here I am!"
+
 	        		});
 
 	    	//place marker on map
@@ -137,23 +142,21 @@
    			return this * Math.PI / 180;
 		}
 
-		/*function distance(otherLat, otherLng){
+		function distance(lat1, lat2, lon1, lon2){
 			var R = 3959; // miles 
 
-var x1 = lat2-lat1;
-var dLat = x1.toRad();  
-var x2 = lon2-lon1;
-var dLon = x2.toRad();  
-var a = Math.sin(dLat/2) * Math.sin(dLat/2) + 
+			var x1 = lat2-lat1;
+			var dLat = x1.toRad();  
+			var x2 = lon2-lon1;
+			var dLon = x2.toRad();  
+			var a = Math.sin(dLat/2) * Math.sin(dLat/2) + 
                 Math.cos(lat1.toRad()) * Math.cos(lat2.toRad()) * 
                 Math.sin(dLon/2) * Math.sin(dLon/2);  
-var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-var d = R * c; 
+			var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+			var d = R * c; 
 
-return d;
-		}*/
-
-	
+			return d;
+		}
 	  	
 
 	</script>

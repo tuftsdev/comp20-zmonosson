@@ -18,13 +18,14 @@
 		
 		// Set up Google Map
 		var mapOptions = {
-	        zoom: 10,
+	        zoom: 13,
 	        center: orgin,
 	        mapTypeId: google.maps.MapTypeId.ROADMAP
 	    };
 
 		// Create the map_canvas
 	    var map; 
+	    var request;
 
 	    function init(){
 
@@ -83,31 +84,74 @@
 	    		console.log(converted);
 	    		
 	    		for (i =0; i < converted.length; i++){
-	    			otherLat = converted[i]["lat"];
-	    			otherLng = converted[i]["lng"];
-	    			username = converted[i]["login"];
-	    			var other = new google.maps.LatLng(otherLat, otherLng);
+	    			if(converted[i]["lat"] == myLat && converted[i]["lng"] == myLng){
+	    				mymap(myLat, myLng);
+	    			} else {
+
+	    				otherLat = converted[i]["lat"];
+	    				otherLng = converted[i]["lng"];
+	    				username = converted[i]["login"];
+	    				var other = new google.maps.LatLng(otherLat, otherLng);
 	    			
-	    			// Create a marker
-	    			var marker = new google.maps.Marker({
-	        			position: other,
-	        			title: username
-	        		});
+	    				// Create a marker
+	    				var marker = new google.maps.Marker({
+	        				position: other,
+	        				title: username
+	        			});
 
-	    			//place marker on map
-	    			marker.setMap(map);	
+	    				//place marker on map
+	    				marker.setMap(map);	
 
-					// Create info window
-	        		google.maps.event.addListener(marker, 'click', function(){
-	        			infowindow.setContent(marker.title);
-	        			infowindow.open(map, marker);
-	        		});
+						// Create info window
+	        			google.maps.event.addListener(marker, 'click', function(){
+	        				infowindow.setContent(this.title);
+	        				infowindow.open(map, this);
+	        			});
+	    			}
 	    		}
 	    	}
 	    }
 
+	    function mymap(myLat, myLng){
+			var mymarker = new google.maps.LatLng(myLat, myLng);
+
+	    	// Create my marker
+	    	var marker = new google.maps.Marker({
+	        	position: mymarker,
+	        	title: "Here I am!"
+	        		});
+
+	    	//place marker on map
+	    	marker.setMap(map);	
+
+			// Create info window
+	        google.maps.event.addListener(marker, 'click', function(){
+	        	infowindow.setContent(this.title);
+	        	infowindow.open(map, this);
+	        });	
+
+	    }
 
 
+		Number.prototype.toRad = function() {
+   			return this * Math.PI / 180;
+		}
+
+		/*function distance(otherLat, otherLng){
+			var R = 3959; // miles 
+
+var x1 = lat2-lat1;
+var dLat = x1.toRad();  
+var x2 = lon2-lon1;
+var dLon = x2.toRad();  
+var a = Math.sin(dLat/2) * Math.sin(dLat/2) + 
+                Math.cos(lat1.toRad()) * Math.cos(lat2.toRad()) * 
+                Math.sin(dLon/2) * Math.sin(dLon/2);  
+var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+var d = R * c; 
+
+return d;
+		}*/
 
 	
 	  	
@@ -118,6 +162,7 @@
 
 	<body onload = "init()">
            
+    <h1> Marauder's Map </h1>       
     <div id="map_canvas"></div>
 
 

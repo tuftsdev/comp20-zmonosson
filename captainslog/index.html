@@ -7,9 +7,24 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script>
 	  	$("document").ready(function(){ 
-			//your code goes here
-			$("#log)").prepend("<p> Winter is coming </p>");
+	  		theMessage = $("#msg)").value;
+	  		toUpdate = $("#log)");
+
+
+	  		element = $("p");
+			element.prepend("<p> Winter is coming </p>");
 		});
+
+		/*
+		theMessage = document.getElementById("msg").value;
+		toUpdate = document.getElementById("content");
+		
+		// The idea: create a new node and prepend to the first node in the "content" div
+		newElem = document.createElement("p");
+		newElem.innerHTML = '<p><span class="message">' +theMessage + " #FML</span></p>";
+		toUpdate.insertBefore(newElem, toUpdate.childNodes[0]);
+		document.getElementById("msg").value = "";
+		*/
 	</script>
 </head>
 

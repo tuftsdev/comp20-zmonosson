@@ -16,8 +16,7 @@
  				if(key == 13)  // the enter key code
   				{
    					$("#log").prepend( "<p>" + $("#msg").val() + "</p>");	
-   					localStorage.setItem(//$("#msg").val()); 
-   						"hello");
+   					localStorage.setItem("messages", $("#log").html());
   				}
 			});
 	  		
@@ -25,11 +24,22 @@
 
 	function reload()
 	{
-		output = "";
-		for (key in localStorage) {
-			output = output + "<p>" + localStorage[key] + "</p>";
-		}
+		output = localStorage["messages"];
+
+		if (output == undefined){
+			output = "";
+		} 
+		
+
+		//for (key in localStorage) {
+			output = "<p>" + output + "</p>";
+			console.log(output);
+			if (output == undefined){
+				output = "";
+			}
+		//}
 		$("#log").html(output);
+
 	}
 
 		/*

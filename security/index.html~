@@ -13,9 +13,33 @@
     <h3> Abstract of Findings </h3>
     <h3> Issues Found </h3>
     
-    <p> 1) XSS Vulernability </p>
+    <p> 1) Cross Site Scripting (XSS) Vulernability </p>
+    <ul>
+      <li>  This vulernability was found by inputing code into the login field instead of a string name. 
+	    Multiple attacks were tried such as using script code to insert a picture into the background 
+	    of the website such as: 
+	    curl --data "<script tag > window.document.body.innerHTML=
+	    '<style>body{background-image:url(http://buymelaughs.com/wp-content/uploads/2014/01/Funny-Babies-Pictures-7.jpg);
+	    background-size:20%;})</style>';
+	    </script tag>." </li>
+	    
+      <li>  The XSS security issue is located within the POST request in sendLocation because the vulnerability 
+	    resides in the concept that the code currently does not check what is being inputted except if 
+	    nothing is being inputted.</li>
+	    
+      <li>  The severity of this issue is <b>high</b> because it is easy to redirect or covered the page with so
+	    much random information that the purpose of the website becomes defeated if the login information
+	    cannot be viewed and compromises its functionality. </li>	  
+	    
+      <li>  A potential solution for this would be to check and clean any inputted login information after the POST
+	    request has been completed, but before it is actually stored in the database and outputted onto the website
+	    when the GET request is called on the server.</li>
+	    
+        
+    </ul>
     
     <p> 2) Code Injection </p>
+    <!-- http://assignment-3.herokuapp.com/location.json?login[$ne]=mchow -->
     
     <p> 3) Issue: </p>
     

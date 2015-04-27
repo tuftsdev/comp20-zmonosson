@@ -23,9 +23,10 @@
 	    background-size:20%;})</style>';
 	    </script tag>." </li>
 	    
-      <li>  The XSS security issue is located within the POST request in sendLocation because the vulnerability 
-	    resides in the concept that the code currently does not check what is being inputted except if 
-	    nothing is being inputted.</li>
+      <li>  The XSS security issue is located within the POST request in '/sendLocation' because the vulnerability 
+	    resides in the concept that the code currently does not check what is being inputted unless 
+	    nothing is being inputted.There is no error check to see if "evil" code is being added into the information
+	    given by the user.</li>
 	    
       <li>  The severity of this issue is <b>high</b> because it is easy to redirect or covered the page with so
 	    much random information that the purpose of the website becomes defeated if the login information
@@ -35,7 +36,9 @@
 	    request has been completed, but before it is actually stored in the database and outputted onto the website
 	    when the GET request is called on the server.</li>
 	    
-        
+      <li> Proof of Vulnerability:
+	    <img src="Screenshot_xss.png" width="35%" height = "35%" 
+		  alt="Screen shot of the website after xss"/> </li>	      
     </ul>
     
     <p> 2) Code Injection </p>

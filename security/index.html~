@@ -13,9 +13,11 @@
     <h3> Abstract of Findings </h3>
     <h3> Issues Found </h3>
     
-    <p> 1st Issue: XSS Vulernability </p>
+    <p> 1) XSS Vulernability </p>
     
-    <p> 2nd Issue: Code Injection </p>
+    <p> 2) Code Injection </p>
+    
+    <p> 3) Issue: </p>
     
     <h3> Conclusion </h3>
     

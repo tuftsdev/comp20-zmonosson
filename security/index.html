@@ -13,7 +13,9 @@
     <h3> Abstract of Findings </h3>
     <h3> Issues Found </h3>
     
-    <p> 1) Cross Site Scripting (XSS) Vulernability </p>
+    <ol>
+    <li> Cross Site Scripting (XSS) Vulernability </li>
+    
     <ul>
       <li>  This vulernability was found by inputing code into the login field instead of a string name. 
 	    Multiple attacks were tried such as using script code to insert a picture into the background 
@@ -21,31 +23,76 @@
 	    curl --data "<script tag > window.document.body.innerHTML=
 	    '<style>body{background-image:url(http://buymelaughs.com/wp-content/uploads/2014/01/Funny-Babies-Pictures-7.jpg);
 	    background-size:20%;})</style>';
-	    </script tag>." </li>
-	    
+	    </script tag>." 
+      </li>
+      &nbsp;
       <li>  The XSS security issue is located within the POST request in '/sendLocation' because the vulnerability 
 	    resides in the concept that the code currently does not check what is being inputted unless 
 	    nothing is being inputted.There is no error check to see if "evil" code is being added into the information
-	    given by the user.</li>
-	    
+	    given by the user.
+      </li>
+      &nbsp;
       <li>  The severity of this issue is <b>high</b> because it is easy to redirect or covered the page with so
 	    much random information that the purpose of the website becomes defeated if the login information
-	    cannot be viewed and compromises its functionality. </li>	  
-	    
-      <li> Proof of Vulnerability:
+	    cannot be viewed and compromises its functionality. 
+      </li>	  
+      &nbsp;
+      <li>  Proof of Vulnerability:
 	    <img src="Screenshot_xss.png" width="35%" height = "35%" 
-		  alt="Screen shot of the website after xss"/> </li>	    
-		  
+		  alt="Screen shot of the website after xss"/> 
+      </li>	    
+     &nbsp;
       <li>  A potential solution for this would be to check and clean any inputted login information after the POST
 	    request has been completed, but before it is actually stored in the database and outputted onto the website
 	    when the GET request is called on the server.</li>	  
     </ul>
     
-    <p> 2) Code Injection </p>
+    &nbsp;
+    <li> Code Injection </p>
     <!-- http://assignment-3.herokuapp.com/location.json?login[$ne]=mchow -->
     
-    <p> 3) Issue: </p>
+    <ul>
+      <li> This security issue takes place in the /location.json feature that searches for a the specific information
+	   associated with a certain username. The code was written so that if the login is undefined, then an empty
+	   JSON array is sent back or if the login matches a login in the database, then the login, lat, lng, and date
+	   created are outputted to the user. This issue of code injection returns an associative array of all the logins
+	   and related information of every login in the database except for the one searched for. 
+      </li>
+     
+      <ul> 
+	<li>    
+	   The typical syntax would be:
+	   http://assignment-3.herokuapp.com/location.json?login=mchow.
+	</li>   
+	<li>   
+	   However, the code injection looks like: 
+	   http://assignment-3.herokuapp.com/location.json?login[$ne]=mchow 
+	</li> 
+      </ul>
+      &nbsp;
+      <li> The severity of this security issue is <b> high </b> because the hacker can download all the information
+	   in the database except for the specific login information he or she asked for. For this specific server,
+	   this gives the hacker access to all the latitudinal and longitudinal information of each user, which is 
+	   personal information and allowing private information to be leaked to the hacker.</li>
+      &nbsp;
     
+      <li> This issue was discovered because the '/location.json' function does not check or clear the login 
+	  parameter given by the hacker except if the login name is undefined. As well, there no check of the
+	  parameters when the server runs the POST request and sends the data back to the hacker/user. Proof
+	  that the login does not check or clean up the parameters inputted by the user: 
+	  <img src="Screenshot_newlocation.png" width="35%" height = "35%" 
+		  alt="Screen shot of '/location.json' and how it does not check or clean the user's parameters"/> 
+	
+      </li>
+      &nbsp;
+      <li> Proof of Vulnerability:
+	  <img src="Screenshot_code_injection.png" width="35%" height = "35%" 
+		  alt="Screen shot of all the data in the database except for mchow's information"/> 
+      </li>
+      
+    </ul>
+    <li> Issue: </p>
+    </ol>
     <h3> Conclusion </h3>
     
   </body>

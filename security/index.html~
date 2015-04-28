@@ -3,6 +3,7 @@
 <html>
   <head>
     <title> Assignment 4: Security and Privacy Assessment of the Real Marauder's Map Server </title>
+    <!--<link rel="stylesheet" href="index_style.css" /> -->
     <meta charset = "utf-8" />
   </head>
   
@@ -30,8 +31,10 @@
     </p>
     
     <h3> Abstract of Findings </h3>
-    <p>  Many of the vulnerabilities discovered in this assessment occurred because the server trusts the user and the data that
-	 he or she is inputting. One main recommendation for fixing these vulnerabilites is to check and clean both the input
+    <p>  Many of the vulnerabilities discovered in this assessment occurred because the server trusts the user that the data that
+	 he or she is inputting is good data. Bad data is something that could change what is viewed on the website or allows for users
+	 to view the "what should be private" data inputted by other individuals and therefore is breaking the privacy that those 
+	 other individuals thought they had. One main recommendation for fixing these vulnerabilites is to check and clean both the input
 	 sent by the users before entering it in the database as well as to check and clean the data before printing it on the
 	 website.
     </p>
@@ -62,7 +65,7 @@
       </li>	  
       &nbsp;
       <li>  Proof of Vulnerability:
-	    <img src="Screenshot_xss.png" width="35%" height = "35%" 
+	    <img src="Screenshot_xss.png" width="50%" height = "50%" 
 		  alt="Screen shot of the website after xss"/> 
       </li>	    
      &nbsp;
@@ -104,13 +107,15 @@
 	  parameter given by the hacker except if the login name is undefined. As well, there no check of the
 	  parameters when the server runs the POST request and sends the data back to the hacker/user. Proof
 	  that the login does not check or clean up the parameters inputted by the user: 
-	  <img src="Screenshot_newlocation.png" width="35%" height = "35%" 
+	  <br/>
+	  <img src="Screenshot_newlocation.png" width="65%" height = "65%" 
 		  alt="Screen shot of '/location.json' and how it does not check or clean the user's parameters"/> 
 	
       </li>
       &nbsp;
       <li> Proof of Vulnerability:
-	  <img src="Screenshot_code_injection.png" width="35%" height = "35%" 
+	  <br/>
+	  <img src="Screenshot_code_injection.png" width="65%" height = "65%" 
 		  alt="Screen shot of all the data in the database except for mchow's information"/> 
       </li>
       

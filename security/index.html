@@ -47,10 +47,10 @@
       <li>  This vulernability was found by inputing code into the login field instead of a string name. 
 	    Multiple attacks were tried such as using script code to insert a picture into the background 
 	    of the website such as: 
-	    curl --data "' open script tag here' window.document.body.innerHTML=
+	    curl --data "<script tag > window.document.body.innerHTML=
 	    '<style>body{background-image:url(http://buymelaughs.com/wp-content/uploads/2014/01/Funny-Babies-Pictures-7.jpg);
 	    background-size:20%;})</style>';
-	    'close script tag here' http://assignment-3.herokuapp.com/sendLocation
+	    </script tag>." 
       </li>
       &nbsp;
       <li>  The XSS security issue is located within the POST request in '/sendLocation' because the vulnerability 

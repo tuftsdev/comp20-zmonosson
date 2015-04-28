@@ -19,6 +19,14 @@
 	outlines potential vulnerabilities found in the server in the web application.
     </p>
     <h3> Methodology </h3>
+    
+    <p> The methodology used for finding security and privacy vulnerabilities was primarily using the "black box"
+	method. The "black box" method entails hacking and editing the code without understanding how it fundametnally
+	works or runs. The vulnerabilities were testing by using curl commands (i.e. curl --data "login=param&lat=param&lng=param"
+	http://assignment-3.herokuapp.com/sendLocation) to send parameters to the database and searching for data by directly inputting
+	into the URL (i.e. assignment-3.herokuapp.com/location.json?login=mchow). After using the "black box" method to test the
+	vulnerabilites, the code was looked over to find the specific points that these issues could have occurred.
+    </p>
     <h3> Abstract of Findings </h3>
     <h3> Issues Found </h3>
     

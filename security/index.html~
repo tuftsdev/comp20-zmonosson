@@ -123,6 +123,7 @@
     </ul>
     <li> Issue: Change a user's latitude and longitude with given login</li>
       <ul>
+	&nbsp;
 	<li> This security issue lies in the '/sendLocation' GET request. Part of the assignment was to update an individual's
 	     location if they have already sent their information to the database once before. This update is completed by using the
 	     function db.collection.update(query, update, options). Specifically, this server checks to see if the login exists already 

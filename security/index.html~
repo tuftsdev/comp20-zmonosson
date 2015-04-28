@@ -18,15 +18,23 @@
 	outputs each login on Google Maps based on the location stored on the server. For this particular assessment,
 	outlines potential vulnerabilities found in the server in the web application.
     </p>
+    
     <h3> Methodology </h3>
     
     <p> The methodology used for finding security and privacy vulnerabilities was primarily using the "black box"
 	method. The "black box" method entails hacking and editing the code without understanding how it fundametnally
 	works or runs. The vulnerabilities were testing by using curl commands (i.e. curl --data "login=param&lat=param&lng=param"
 	http://assignment-3.herokuapp.com/sendLocation) to send parameters to the database and searching for data by directly inputting
-	into the URL (i.e. assignment-3.herokuapp.com/location.json?login=mchow).
+	into the URL (i.e. assignment-3.herokuapp.com/location.json?login=mchow). After using the "black box" method to test the
+	vulnerabilites, the code was looked over to find the specific points that these issues could have occurred.
     </p>
+    
     <h3> Abstract of Findings </h3>
+    <p>  Many of the vulnerabilities discovered in this assessment occurred because the server trusts the user and the data that
+	 he or she is inputting. One main recommendation for fixing these vulnerabilites is to check and clean both the input
+	 sent by the users before entering it in the database as well as to check and clean the data before printing it on the
+	 website.
+    </p>
     <h3> Issues Found </h3>
     
     <ol>

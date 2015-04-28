@@ -59,12 +59,13 @@
 	    given by the user.
       </li>
       &nbsp;
-      <li>  The severity of this issue is <b>high</b> because it is easy to redirect or covered the page with so
+      <li>  The severity of this issue is <b>moderate</b> because it is easy to redirect or covered the page with so
 	    much random information that the purpose of the website becomes defeated if the login information
 	    cannot be viewed and compromises its functionality. 
       </li>	  
       &nbsp;
       <li>  Proof of Vulnerability:
+	    <br/>
 	    <img src="Screenshot_xss.png" width="50%" height = "50%" 
 		  alt="Screen shot of the website after xss"/> 
       </li>	    
@@ -120,7 +121,22 @@
       </li>
       
     </ul>
-    <li> Issue: </p>
+    <li> Issue: Change a user's latitude and longitude with given login</li>
+      <ul>
+	<li> This security issue lies in the '/sendLocation' GET request. Part of the assignment was to update an individual's
+	     location if they have already sent their information to the database once before. This update is completed by using the
+	     function db.collection.update(query, update, options). Specifically, this server checks to see if the login exists already 
+	     and if it does, it updates the latitude, longitude, and date created with that given login. However, this is a security
+	     flaw because if an individual knows that a login exists, then they can use that login to modify the associated latitude, 
+	     longitude, and date created. This makes each user's login information vulnerable to be modified by anybody. As well, if the
+	     hacker injects an associate array as mentioned above, he or she can get access to all information in the databse and can
+	     modify the information for every single login.
+	</li>
+	&nbsp;
+	<li>
+	</li>
+      
+      </ul>
     </ol>
     <h3> Conclusion </h3>
     

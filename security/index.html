@@ -9,6 +9,7 @@
   
   <body>
     <h1> COMP 20: Assignment 4 </h1>
+    <h4> Analysis by Zoe Monosson </h4>
     <h3> Introduction: </h3>
     
     <p> This assessment analyzes the security and privacy of the sever for the Real Marauder's Map by rlarson for
@@ -125,6 +126,8 @@
       </li>
       
     </ul>
+    &nbsp;
+    
     <li> Issue: Change a user's latitude and longitude with given login</li>
       <ul>
 	&nbsp;
@@ -155,10 +158,24 @@
 	  &nbsp;	    
 	  <img src="modify_2.png" width="40%" height = "40%" 
 		  alt="the latitude and longitude for zmono has been changed"/>	  
-	</li>	  
+	</li>	 
+	
+	<li> One possible resolution would be to have a password associated with each login, so that an individual cannot send data
+	    with a certain login unless they have the matching password. The matching password would <b>not</b> be stored in the locations 
+	    database, but in another database or hashtable in a key/pair format.
+	</li>
       </ul>
     </ol>
     <h3> Conclusion </h3>
+    
+    <p> By implementing the above recommendations for the three security and privacy issues, the database and server for the Marauder's
+	Map will become more secure and reliable. Most importantly, the data being inputted by the user must be checked and cleaned
+	before being implemented into the database as well as before being outputted to the user on the web application. Lastly, the 
+	design of updating user information should be restructed. There should be another database or hashtable of key pairs where login
+	names and passwords can be stored. This would stop allowing any user to modify the information in the database with soley the 
+	knowledge of that user's login name.Third party site protection websites will set up secure data accessfor as low as $60 per 
+	year. What a steal!
+    </p>
     
   </body>
 </html>  

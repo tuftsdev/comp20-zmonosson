@@ -47,10 +47,14 @@
       <li>  This vulernability was found by inputing code into the login field instead of a string name. 
 	    Multiple attacks were tried such as using script code to insert a picture into the background 
 	    of the website such as: 
-	    curl --data "<script tag > window.document.body.innerHTML=
-	    '<style>body{background-image:url(http://buymelaughs.com/wp-content/uploads/2014/01/Funny-Babies-Pictures-7.jpg);
-	    background-size:20%;})</style>';
-	    </script tag>." 
+	 <ul>
+	    <li>
+	    curl --data "'open script tag' window.document.body.innerHTML=
+	    ''open style tag here'body{background-image:url(input image here);
+	    background-size:20%;})'close style tag here'';
+	    'close script tag' http://assignment-3.herokuapp.com/sendLocation 
+	    </li>
+	 </ul>
       </li>
       &nbsp;
       <li>  The XSS security issue is located within the POST request in '/sendLocation' because the vulnerability 
@@ -134,9 +138,23 @@
 	     modify the information for every single login.
 	</li>
 	&nbsp;
-	<li>
+	<li> The severity of this issue is <b> high </b> because if anyone can modify the database just with the knowledge of one login
+	     then every individual who inputs their information to the database is at risk of modification and therefore the information
+	     in the database is unreliable.Because all users have the opprotunity to send their location to the database and can pick their
+	     login, ever user and hacker has access to one login that he or she knows exists in the database. This is a huge issue because
+	     anyone can modify all of the data in the database and other users can lose the data they have stored.
 	</li>
-      
+	&nbsp;
+	<li> This issue was found because it is innately a flaw in the design of the server.
+	</li>
+	&nbsp;
+	<li>Proof of Vulnerability:
+	  <br/>
+	  <img src="modify_1.png" width="40%" height = "40%" 
+		  alt="normal output from the database"/> 
+	  <img src="modify_2.png" width="40%" height = "40%" 
+		  alt="the latitude and longitude for zmono has been changed"/>	  
+	</li>	  
       </ul>
     </ol>
     <h3> Conclusion </h3>

@@ -75,27 +75,29 @@ app.get('/location.json', function(request, response) {
 });
 
 app.get('/', function(request, response) {
-response.set('Content-Type', 'text/html');
-var indexPage = '';
-db.collection('locations', function(er, collection) {
-if(!er) {
-collection.find().sort({created_at: -1}).toArray(function(err, cursor) {
-if (!err) {
-var style = "p {position: relative; width: 1000px; height: 30px; line-height: 30px; background-color: #9BD2D2; border: 2px solid #9FDAC7; -webkit-border-radius: 30px; -moz-border-radius: 30px; border-radius: 30px; }"; indexPage += "<!DOCTYPE HTML><html><head><title>Locations</title><style>"+style+"</style></head><body><h1>Locations:</h1>";
-for (var count = 0; count < cursor.length; count++) {
-indexPage += "<p>" + cursor[count].login + " checked in at " + cursor[count].lat + ", " + cursor[count].lng + " on " + cursor[count].created_at + "</p>";
-}
-indexPage += "</body></html>";
-response.send(indexPage);
-} else {
-response.send('<!DOCTYPE HTML><html><head><title>Locations</title></head><body><h1>Whoops, something went terribly wrong!</h1></body></html>');
-}
-});
-}
-else {
-response.send(500);
-}
-});
+  response.set('Content-Type', 'text/html');
+  var indexPage = '';
+  
+  db.collection('locations', function(er, collection) {
+    if(!er) {
+      collection.find().sort({created_at: -1}).toArray(function(err, cursor) {
+	if (!err) {
+	  var style = "p {position: relative; width: 1000px; height: 30px; line-height: 30px; background-color: #9BD2D2;border: 2px solid #9FDAC7; -webkit-border-radius: 30px; -moz-border-radius: 30px; border-radius: 30px; }"; indexPage += "<!DOCTYPE HTML><html><head><title>Locations</title><style>"+style+"</style></head><body><h1>Locations:</h1>";
+	  for (var count = 0; count < cursor.length; count++) {
+	    indexPage += "<p>" + cursor[count].login + " checked in at " + cursor[count].lat + ", " + cursor[count].lng + " on " + 
+			cursor[count].created_at + "</p>";
+	  }
+	  indexPage += "</body></html>";
+	  response.send(indexPage);
+	} else {
+	  response.send('<!DOCTYPE HTML><html><head><title>Locations</title></head><body><h1>Whoops, something went terribly wrong!</h1></body></html>');
+	}
+      });
+    }
+    else {
+      response.send(500);
+    }
+  });
 });
 
 app.listen(process.env.PORT || 3000);

@@ -9,6 +9,15 @@
   <body>
     <h1> COMP 20: Assignment 4 </h1>
     <h3> Introduction: </h3>
+    
+    <p> This assessment analyzes the security and privacy of the sever for the Real Marauder's Map by rlarson for
+	Comp20's Assignment 3. The server uses Heroku, Node.js with the Express web framework, and MongoDB in order
+	to create "a web application that maintains "location check-ins" (login, latitude, and longitude) for a long
+	period of time." This web application was specifically made to work with Comp20's Assignment 2 to create a 
+	Marauder's Map. This Marauder's Map takes the login names, latitudes and longitudes stored in the database and
+	outputs each login on Google Maps based on the location stored on the server. For this particular assessment,
+	outlines potential vulnerabilities found in the server in the web application.
+    </p>
     <h3> Methodology </h3>
     <h3> Abstract of Findings </h3>
     <h3> Issues Found </h3>
@@ -84,6 +93,12 @@
 		  alt="Screen shot of '/location.json' and how it does not check or clean the user's parameters"/> 
 	
       </li>
+      &nbsp;
+      <li> Proof of Vulnerability:
+	  <img src="Screenshot_code_injection.png" width="35%" height = "35%" 
+		  alt="Screen shot of all the data in the database except for mchow's information"/> 
+      </li>
+      
     </ul>
     <li> Issue: </p>
     </ol>
